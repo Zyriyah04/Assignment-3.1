@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Craps Game</title>
+        <style>
+            #output {
+                font-size: 24pz;
+                margin-bottom: 10px
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Craps Game</h1>
+        <p>Click the roll button to start and play!</p>
+        <div id="output"></div>
+
+        <button id="rollBtn" onclick="rollDice()">Roll</button>
+        <button id="resetBtn" onclick="resetGame()" disabled></button>
+   <script>
+    var outputDiv = document.getElementById("output");
+    var rollBtn = document.getElementById("rollBtn");
+    var resetBtn = document.getElementById("resetBtn");
+    var point = 0;
+
+    function rollDice() {
+        var dice1 =  Math.floor(Math.random() * 6) + 1;
+        var dice2 = Math.floor(Math.random() * 6) + 1;
+        var sum = dice1 + dice2;
+
+        outputDiv.innerHTML = "You rolled " + dice1 + " + " + dice2 + " = " + sum;
+        if (sum === 7 || sum === 11) {
+            outputDiv.innerHTML += "<br>Congrats! You won twin!!";
+            resetBtn.disabled = false;
+            rollBtn.disabled = true;
+        } else if (sum === 2 || sum === 3 | sum === 12)
+        outputDiv.innerHTML += "<br>Sorry, you lose!";
+        resetBtn.disabled = false;
+        rollBtn.disabled = true;
+    } {
+        point = sum;
+        outputDiv.innerHTML += "<br> Point is set to " + point + ". Roll again!";
+     }
+     {
+        if (sum === point) {
+            outputDiv.innerHTML += "<br>Congratulations! you won";
+            resetBtn.diabled = false;
+            rollBtn.disabled = true;
+        } else if (sum === 7){
+            outputDiv.innerHTML += "<br>Sorry, you lost.";
+            resetBtn.disabled = false;
+            rollBtn.disabled = true;
+        } else {
+            outputDiv.innerHTML += "<br>Roll again!";
+
+        }
+    }
+      
+     function resetGame() {
+        point = 0;
+        outputDiv.innerHTML = "";
+        resetBtn.disabled = true;
+        rollBtn.disbled = false;
+     }
+
+    
+    </script>
+    </body>
+</html>
